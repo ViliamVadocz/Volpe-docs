@@ -4,3 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "The Volpe Programming Language"
+
+[output.html]
+default-theme = "ayu"
+preferred-dark-theme = "ayu"
