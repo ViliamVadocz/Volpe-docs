@@ -22,7 +22,7 @@ Here is a list of all the symbols used by Volpe and their meaning:
 - `{}` code block; scope
   - as code block, whatever is inside gets executed once
   - defines scope, often used in flow control
-  - found after `=>` in function if they are not using *shorthand notation*
+  - found after `=>` in functions if they are not using *shorthand notation*
 
 - `()` function call; mathematical precedence
   - if preceded by a symbol, calls the function
@@ -131,15 +131,20 @@ Only defined for integers and floating point numbers.
 - `::` map (not implemented)
   - map a function on *rhs* to every element of iterable on *lhs*
 
+- `:():` map with carried variables
+  - variables in the brackets are carried by the function on *rhs* and stay in scope
+  - no brackets are needed when there is only one or no variable
+
 ## Comments
 
-- `#` single line comment
-  - Can be placed anywhere
-  - The comment continues until the end of the line
+- `#` single-line comment
+  - can be placed anywhere
+  - the comment continues until the end of the line
 
-- `#!` opening to multiline comment
-- `!#` closing to multiline comment
-  - Everything between the opening and closing signature is ignored.
+- `#! !#` multiline comment
+  - `#!` opening signature
+  - `!#` closing signature
+  - everything between the opening and closing signature is ignored.
 
 ## Special
 
@@ -150,6 +155,7 @@ Only defined for integers and floating point numbers.
 - `~` conversion
   - integer on *rhs* gets converted to floating point number
 
-- `${}` shorthand function with no arguments (not implemented)
-  - short for `() => {code}`
+- `${}` nullary function (not implemented)
+  - shorthand for function with no arguments
+  - same as `() => {}`
   - the `$` differentiates it from code blocks
