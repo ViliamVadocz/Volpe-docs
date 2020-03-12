@@ -2,7 +2,7 @@
 
 [What is Volpe](./_volpe.md)
 
-- [Expressions](./01_expressions.md)
+- [Expressions and Types](./01_expressions_and_types.md)
 - [Assignment](./02_assignment.md)
   - [Tuple Deconstruction](./02a_tuple_deconstruction.md)
 - [Functions](./03_functions.md)

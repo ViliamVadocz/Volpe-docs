@@ -16,8 +16,9 @@ Here is a list of all the symbols used by Volpe and their meaning:
   - does not mean it returns from the function, just one scope up
 
 - `=>` function
-  - *lhs* defines arguments
+  - *lhs* defines arguments, must be grouped with `()` unless there is only one argument
   - *rhs* defines what to do with them
+  - tuple deconstruction may apply to arguments
 
 - `{}` code block; scope
   - as code block, whatever is inside gets executed once
