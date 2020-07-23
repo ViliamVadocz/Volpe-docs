@@ -1,5 +1,7 @@
 # Symbols and their Meaning
 
+**THIS IS OLD AND NEEDS TO BE UPDATED**
+
 - *lhs* = left hand side
 - *rhs* = right hand side
 
