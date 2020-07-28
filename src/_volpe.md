@@ -1,13 +1,13 @@
 # What is Volpe
 
-Volpe is a compiled strongly-typed functional programming language without any
-keywords.
+Volpe is an [open-source](https://github.com/LHolten/Volpe) compiled
+strongly-typed functional programming language without any keywords.
 
 ## Compiled
 
 Volpe is compiled into [LLVM IR](https://en.wikipedia.org/wiki/LLVM) using the
 [llvmlite](https://llvmlite.readthedocs.io/en/latest/) library for Python. It
-benefits from LLVM optimizations and is theoretically quite fast.
+benefits from LLVM optimizations and is quite fast.
 
 ## Strongly Typed
 
