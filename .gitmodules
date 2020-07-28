@@ -1,0 +1,4 @@
+[submodule "highlight.js"]
+	path = highlight.js
+	url = https://github.com/ViliamVadocz/highlight.js.git
+	branch = volpe
