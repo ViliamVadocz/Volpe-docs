@@ -4,7 +4,7 @@ All the core Volpe types are on the stack and have a known size during compilati
 
 ## Simple Types
 
-### `bool`
+### `boolean` `bool`
 
 - 1 byte
 - True or False
@@ -15,7 +15,7 @@ true := 1 > 0
 false := !true
 ```
 
-### `char`
+### `character` `char`
 
 - 1 byte
 - ascii character
@@ -26,7 +26,7 @@ a := 'a'
 b := 'b'
 ```
 
-### `int64`
+### `integer` `int`
 
 - 8 bytes
 - signed integer
@@ -37,7 +37,7 @@ x := 42
 y := 1337
 ```
 
-### `flt64`
+### `float` `flt`
 
 - 8 bytes
 - floating point number
@@ -51,9 +51,9 @@ e := 2.718
 
 ## Aggregate Types
 
-### `array<T>`
+### `array`
 
-- all elements have the same type `T`
+- all elements have the same type
 - size of array must be known at compile time
 
 ```volpe
@@ -81,8 +81,8 @@ person := {name: "John", age: 24}
 f := (x) {x + 1}
 g := (x) {x + 1}
 
-# a and b have the same type
-# because they both originate in make_add_1
+#! a and b have the same type
+because they both originate in make_add_1 !#
 make_add_1 := () { (x) {x + 1} }
 a := make_add_1()
 b := make_add_1()
