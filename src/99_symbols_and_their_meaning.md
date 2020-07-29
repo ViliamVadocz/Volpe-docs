@@ -1,7 +1,5 @@
 # Symbols and their Meaning
 
-**THIS IS OLD AND NEEDS TO BE UPDATED**
-
 - *lhs* = left hand side
 - *rhs* = right hand side
 
@@ -9,37 +7,38 @@ Here is a list of all the symbols used by Volpe and their meaning:
 
 ## Basic
 
-- `=` assignment
+- `:=` assignment
   - value of *rhs* is assigned to symbol on *lhs*
   - tuple deconstruction may apply
 
-- `:>` return
-  - return value on *rhs* out of current scope
-  - does not mean it returns from the function, just one scope up
-
-- `=>` function
-  - *lhs* defines arguments, must be grouped with `()` unless there is only one argument
-  - *rhs* defines what to do with them
-  - tuple deconstruction may apply to arguments
-
-- `{}` code block; scope
+- `{}` code block; object
   - as code block, whatever is inside gets executed once
-  - defines scope, often used in flow control
-  - found after `=>` in functions if they are not using *shorthand notation*
+  - objects are key value pairs, but the key can be left out
+    - `{value1, key: value2, value3}`
 
-- `()` function call; mathematical precedence
+- `()` function arguments; function call; mathematical precedence
   - if preceded by a symbol, calls the function
+  - if followed by a code block, defines a function
   - otherwise controls order of operations
 
-- `,` element separator in tuples and function arguments
+- `[]` array
+  - elements of same type separated by commas
+
+- `;` statement separator
+  - used to separate statements on the same line
+
+- `,` element separator
   - required after every element except last
+  - in objects with only one element it is required to
+    place a comma to differentiate it from a block
 
 ## Logic / Flow control
 
 Defined for booleans (true or false expressions).
 
-- `->` implication
+- `->` implication; if-then
   - lazy implication, evaluates *lhs*, if true, evaluates *rhs*
+  - if not the last expression in a block, and *lhs* is true, returns *rhs*
 
 - `&&` logical and
   - lazy and, only true if both sides are true
@@ -51,27 +50,20 @@ Defined for booleans (true or false expressions).
   - logical negation
   - false if true, true if false
 
-- `;` lowest priority and
-  - like logical and, except has much lower priority
-  - used to separate expressions on the same line
-  - if either side is false, the line will evaluate to false, triggering an assertion error
-
 ### Truth Tables
 
-```text
-A  B | A -> B | A && B | A || B | !A | A; B
------+--------+--------+--------+----+------
-T  T |   T    |   T    |   T    | F  |  T
-T  F |   F    |   F    |   T    | F  |  F
-F  T |   T    |   F    |   T    | T  |  F
-F  F |   T    |   F    |   T    | T  |  F
-```
+| `A` | `B` | `A -> B` | `A && B` | <code>A &#124;&#124; B</code> | `!A` |
+|:---:|:---:|:--------:|:--------:|:-----------------------------:|:----:|
+|  T  |  T  |    T     |    T     |               T               |  F   |
+|  T  |  F  |    F     |    F     |               T               |  F   |
+|  F  |  T  |    T     |    F     |               T               |  T   |
+|  F  |  F  |    T     |    F     |               F               |  T   |
 
 ## Comparison
 
-Defined only for integers and floating point numbers.
+Defined only for integers, floating point numbers, and characters.
 
-- `==` equality
+- `=` equality
   - true if both sides have the same value
 
 - `!=` inequality
@@ -106,37 +98,24 @@ Only defined for integers and floating point numbers.
 - `/` division
   - divide *lhs* by *rhs*
 
-- `**` power (not implemented)
-  - take *lhs* to the *rhs* power
+- `%` modulo
+  - *lhs* modulo *rhs*
+  - the remainder after division of *lhs* by *rhs*
 
-- `+=` add assign (not implemented)
+- `+=` add assign
   - add *rhs* to the value of *lhs* and assign to *lhs*
 
-- `-=` subtract assign (not implemented)
+- `-=` subtract assign
   - subtract *rhs* from the value of *lhs* and assign to *lhs*
 
-- `/=` divide assign (not implemented)
-  - divide by *rhs* and assign to *lhs*
-
-- `*=` multiply assign (not implemented)
+- `*=` multiply assign
   - multiply by *rhs* and assign to *lhs*
 
-## Iterables
+- `/=` divide assign
+  - divide by *rhs* and assign to *lhs*
 
-- `[]` tuple
-  - create tuple
-  - use `,` to separate elements
-  - tuples can be nested
-
-- `..` range (not implemented)
-  - make an integer iterator spanning range from *lhs* to *rhs*
-
-- `::` map (not implemented)
-  - map a function on *rhs* to every element of iterable on *lhs*
-
-- `:():` map with carried variables
-  - variables in the brackets are carried by the function on *rhs* and stay in scope
-  - no brackets are needed when there is only one or no variable
+- `%=` modulo assign
+  - modulo by *rhs* and assign to *lhs*
 
 ## Comments
 
@@ -147,7 +126,7 @@ Only defined for integers and floating point numbers.
 - `#! !#` multiline comment
   - `#!` opening signature
   - `!#` closing signature
-  - everything between the opening and closing signature is ignored.
+  - everything between the opening and closing signature is ignored
 
 ## Special
 
@@ -155,10 +134,10 @@ Only defined for integers and floating point numbers.
   - symbol referring to the function we are in
   - example: `@(args)`
 
-- `~` conversion
-  - integer on *rhs* gets converted to floating point number
+- `~` float conversion
+  - float on *rhs* gets converted to integer (round down)
 
-- `${}` nullary function (not implemented)
-  - shorthand for function with no arguments
-  - same as `() => {}`
-  - the `$` differentiates it from code blocks
+- `.` int conversion
+  - int on *lhs* + decimal on *rhs* become new float
+  - `10.5`
+  - `{a := 10; a.5}`
